@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" fill="none">
+  <g fill="#39ff14">
+    <!-- Factory icon (simplified) -->
+    <path d="M4 32V16l8-6v6l8-6v22H4zm2-2h12V14.5l-4 3V12l-4 3v15h-4z"/>
+    <rect x="7" y="22" width="3" height="4"/>
+    <rect x="12" y="22" width="3" height="4"/>
+    <path d="M16 8h2v4h-2z"/>
+    <path d="M10 6h2v6h-2z"/>
+  </g>
+  <!-- Text: kraftwerk -->
+  <text x="28" y="27" font-family="JetBrains Mono, Fira Code, monospace" font-size="18" font-weight="500" fill="#39ff14">kraftwerk</text>
+</svg>

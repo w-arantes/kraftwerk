@@ -1,0 +1,193 @@
+# kraftwerk — Full Documentation for LLMs
+
+> A modern monorepo boilerplate for scalable projects.
+
+## Etymology
+
+**kraftwerk** (German: /ˈkʁaftvɛʁk/) — power plant, factory
+
+Like a power plant generates energy, kraftwerk generates the foundation for your projects.
+
+## Overview
+
+kraftwerk is a production-ready monorepo boilerplate designed for building scalable applications and distributing packages. It provides a modern, opinionated setup with best-in-class tooling.
+
+## Tech Stack
+
+### Build System
+- **Turborepo** — Incremental builds, remote caching, task orchestration
+- **pnpm** — Fast, disk-efficient package manager with strict isolation
+
+### Language & Types
+- **TypeScript 5.7+** — Strict mode, ESM-only, latest features
+- **Biome** — Unified linting and formatting (replaces ESLint + Prettier)
+
+### Frontend
+- **React 19** — Latest patterns, no forwardRef needed
+- **Tailwind CSS v4** — CSS-first configuration with @theme directive
+- **Vite** — Next-generation frontend tooling
+
+### Testing
+- **Vitest** — Fast unit testing with native ESM support
+
+### CI/CD
+- **GitHub Actions** — Automated workflows for lint, test, build
+- **semantic-release** — Automated versioning and changelog
+- **Renovate** — Automated dependency updates
+
+## Workspace Structure
+
+```
+kraftwerk/
+├── apps/
+│   └── web/                    # Example Vite + React application
+│       ├── src/
+│       │   ├── App.tsx         # Main application component
+│       │   ├── main.tsx        # Entry point
+│       │   └── index.css       # Global styles
+│       ├── public/             # Static assets
+│       └── index.html          # HTML template
+├── packages/
+│   ├── config/                 # Shared configuration
+│   │   ├── biome/              # Biome configs (base, react)
+│   │   ├── typescript/         # TypeScript configs (base, react)
+│   │   └── vitest/             # Vitest configs
+│   └── ui/                     # Design system
+│       ├── src/
+│       │   ├── components/     # React components
+│       │   ├── styles/         # Theme and CSS
+│       │   └── index.ts        # Barrel exports
+│       └── .storybook/         # Storybook configuration
+├── docs/                       # Documentation
+│   ├── specification.md        # Project specification
+│   ├── ai-guidelines.md        # AI development guidelines
+│   ├── design-standard.md      # Component design standard
+│   ├── getting-started.md      # Quick start guide
+│   └── usage.md                # Usage documentation
+├── .github/
+│   ├── workflows/              # CI/CD workflows
+│   └── copilot-instructions.md # GitHub Copilot instructions
+├── .cursor/
+│   └── skills/                 # Cursor IDE skills
+├── AGENTS.md                   # Universal AI agent instructions
+├── turbo.json                  # Turborepo configuration
+├── pnpm-workspace.yaml         # pnpm workspace definition
+└── biome.json                  # Root Biome configuration
+```
+
+## Available Scripts
+
+### Monorepo Scripts
+| Script | Description |
+|--------|-------------|
+| `pnpm install` | Install dependencies |
+| `pnpm dev` | Run example app (apps/web) |
+| `pnpm build` | Build all packages and apps |
+| `pnpm lint` | Lint all workspaces |
+| `pnpm format` | Check formatting |
+| `pnpm format:write` | Format and write |
+| `pnpm test` | Run all tests |
+
+### UI Package Scripts
+| Script | Description |
+|--------|-------------|
+| `pnpm ui:dev` | Start Storybook (port 6006) |
+| `pnpm ui:build` | Build UI library |
+| `pnpm ui:build-storybook` | Build static Storybook |
+| `pnpm ui:test` | Run UI tests |
+| `pnpm ui:lint` | Lint UI package |
+
+## Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/w-arantes/kraftwerk.git
+cd kraftwerk
+
+# Install dependencies
+pnpm install
+
+# Start development
+pnpm dev
+
+# Or start Storybook for UI development
+pnpm ui:dev
+```
+
+## UI Components
+
+The `@kraftwerk/ui` package includes:
+
+- **Button** — Primary, secondary, ghost, destructive variants
+- **Card** — Container component with header, content, footer slots
+- **Logo** — kraftwerk branding component
+- **Terminal** — Code/terminal display component
+- **AnimatedTerminal** — Terminal with typing animation
+- **FeatureCard** — Feature showcase card
+- **ThemeToggle** — Dark/light mode toggle
+
+## Design Tokens
+
+Theme colors are defined in CSS variables:
+
+```css
+/* Dark Theme (Default) */
+--color-bg-main: #050505;
+--color-bg-surface: #0a1f0a;
+--color-text-primary: #39ff14;
+--color-text-muted: #228b22;
+--color-accent: #00ff41;
+--color-border-palette: #003b00;
+
+/* Light Theme */
+--color-bg-main: #f0fff0;
+--color-bg-surface: #e0f5e0;
+--color-text-primary: #0a4f0a;
+--color-accent: #00a020;
+```
+
+## AI Development
+
+kraftwerk includes comprehensive AI development support:
+
+### Documentation Hierarchy
+1. **AGENTS.md** — Universal AI agent instructions
+2. **docs/ai-guidelines.md** — Detailed AI development guidelines
+3. **.github/copilot-instructions.md** — GitHub Copilot instructions
+4. **.cursor/skills/** — Cursor IDE context-aware skills
+
+### Cursor Skills
+- `kraftwerk-component` — Component development patterns
+- `kraftwerk-docs` — Documentation workflows
+- `kraftwerk-quality` — Quality gates and deslop
+
+### MCP Tools
+- **Figma MCP** — Design-to-code workflows
+- **shadcn MCP** — Component generation
+- **Context7 MCP** — Documentation enrichment
+
+## Quality Gates
+
+Before committing:
+1. `pnpm lint` — Must pass
+2. `pnpm format` — Must pass
+3. `pnpm test` — Must pass
+4. Remove AI slop (unnecessary comments, defensive code, any casts)
+
+## Links
+
+- **Repository**: https://github.com/w-arantes/kraftwerk
+- **Documentation**: https://github.com/w-arantes/kraftwerk#documentation
+- **License**: MIT
+- **Author**: Wellington Arantes (https://github.com/w-arantes)
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Follow the AI guidelines and quality gates
+4. Submit a pull request
+
+## License
+
+MIT License — see LICENSE file for details.

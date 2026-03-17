@@ -1,39 +1,51 @@
 @import "tailwindcss";
 
 @theme {
-	/* Grey scale (50–950) */
-	--color-grey-50: oklch(0.98 0 0);
-	--color-grey-100: oklch(0.96 0.005 264);
-	--color-grey-200: oklch(0.91 0.01 264);
-	--color-grey-300: oklch(0.83 0.015 264);
-	--color-grey-400: oklch(0.65 0.02 264);
-	--color-grey-500: oklch(0.52 0.02 264);
-	--color-grey-600: oklch(0.42 0.02 264);
-	--color-grey-700: oklch(0.34 0.02 264);
-	--color-grey-800: oklch(0.27 0.015 264);
-	--color-grey-900: oklch(0.21 0.01 264);
-	--color-grey-950: oklch(0.13 0.01 264);
+	/* Dark Theme (CRT Terminal) - Default */
+	--color-bg-main: #050505;
+	--color-bg-surface: #0a1f0a;
+	--color-text-primary: #39ff14;
+	--color-text-muted: #228b22;
+	--color-accent: #00ff41;
+	--color-accent-glow: rgba(57, 255, 20, 0.2);
+	--color-border-palette: #003b00;
 
-	/* Semantic surfaces (dark/grey palette) */
-	--color-surface: var(--color-grey-900);
-	--color-surface-raised: var(--color-grey-800);
-	--color-muted: var(--color-grey-800);
+	/* Semantic surfaces */
+	--color-surface: var(--color-bg-surface);
+	--color-surface-raised: #0d2d0d;
+	--color-muted: #0d2d0d;
 
 	/* Text */
-	--color-foreground: var(--color-grey-50);
-	--color-foreground-subtle: var(--color-grey-300);
-	--color-muted-foreground: var(--color-grey-400);
+	--color-foreground: var(--color-text-primary);
+	--color-foreground-subtle: var(--color-text-muted);
+	--color-muted-foreground: #1a6b1a;
 
 	/* Borders */
-	--color-border: var(--color-grey-700);
-	--color-input: var(--color-grey-600);
+	--color-border: var(--color-border-palette);
+	--color-input: var(--color-border-palette);
 
 	/* Accents */
-	--color-primary: var(--color-grey-100);
-	--color-primary-foreground: var(--color-grey-900);
-	--color-primary-hover: var(--color-grey-200);
-	--color-secondary: var(--color-grey-800);
-	--color-secondary-foreground: var(--color-grey-200);
+	--color-primary: var(--color-accent);
+	--color-primary-foreground: var(--color-bg-main);
+	--color-primary-hover: #33ff55;
+	--color-secondary: var(--color-surface-raised);
+	--color-secondary-foreground: var(--color-text-primary);
 	--color-destructive: oklch(0.55 0.2 25);
-	--color-ring: var(--color-grey-500);
+	--color-ring: var(--color-accent);
+}
+
+/* Light Theme Override */
+[data-theme="light"] {
+	--color-bg-main: #f0fff0;
+	--color-bg-surface: #e0f5e0;
+	--color-text-primary: #0a4f0a;
+	--color-text-muted: #2d7a2d;
+	--color-accent: #00a020;
+	--color-accent-glow: rgba(0, 160, 32, 0.15);
+	--color-border-palette: #a0d0a0;
+	--color-surface-raised: #d0ebd0;
+	--color-muted: #d0ebd0;
+	--color-muted-foreground: #4a8a4a;
+	--color-primary-foreground: #ffffff;
+	--color-primary-hover: #00c030;
 }

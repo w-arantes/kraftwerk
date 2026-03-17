@@ -2,6 +2,9 @@
 	"$schema": "https://biomejs.dev/schemas/2.4.7/schema.json",
 	"root": true,
 	"extends": ["./packages/config/biome/base.json"],
+	"files": {
+		"includes": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.json", "**/*.css"]
+	},
 	"css": {
 		"parser": {
 			"tailwindDirectives": true

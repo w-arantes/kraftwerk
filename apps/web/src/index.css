@@ -1,1 +1,21 @@
 @import "@kraftwerk/ui/styles";
+@import "tw-animate-css";
+
+body {
+	font-family: "JetBrains Mono", monospace;
+	background-color: var(--color-bg-main);
+	transition: background-color 0.3s ease;
+}
+
+[data-theme="light"] body {
+	background-color: var(--color-bg-main);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}

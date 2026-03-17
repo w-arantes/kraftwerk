@@ -1,6 +1,10 @@
-# Documentation Index
+<div align="center">
+  <img src="assets/favicon.svg" alt="kraftwerk" width="60" />
+  <h1><code>kraftwerk</code> Documentation</h1>
+  <p><strong>German:</strong> <em>/ˈkʁaftvɛʁk/</em> — power plant, factory</p>
+</div>
 
-Central index for Kraftwerk specification and guides.
+---
 
 ## Specification & Architecture
 
@@ -17,6 +21,8 @@ Central index for Kraftwerk specification and guides.
 - [**Getting Started**](getting-started.md) — Prerequisites, install, first run, workspace layout, key scripts
 - [**Usage & Boilerplate**](usage.md) — Adopting the boilerplate, customization, adding packages/apps, publishing, AI tools, Cursor Skills
 
+---
+
 ## AI Development Entry Points
 
 | Entry Point | Location | Purpose |
@@ -32,6 +38,8 @@ Central index for Kraftwerk specification and guides.
 | kraftwerk-component | `.cursor/skills/kraftwerk-component/SKILL.md` | UI component patterns |
 | kraftwerk-docs | `.cursor/skills/kraftwerk-docs/SKILL.md` | Spec-first workflow, MCP usage |
 | kraftwerk-quality | `.cursor/skills/kraftwerk-quality/SKILL.md` | Quality gates (lint, format, test, deslop) |
+
+---
 
 ## Package Layout
 

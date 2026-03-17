@@ -17,7 +17,6 @@
 		"test": "turbo run test",
 		"ui:dev": "pnpm --filter @kraftwerk/ui run storybook",
 		"ui:build": "pnpm --filter @kraftwerk/ui run build",
-		"ui:build-storybook": "pnpm --filter @kraftwerk/ui run build-storybook",
 		"ui:test": "pnpm --filter @kraftwerk/ui run test",
 		"ui:lint": "pnpm --filter @kraftwerk/ui run lint",
 		"db:up": "docker compose up -d",

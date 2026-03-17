@@ -83,7 +83,6 @@ Packages are wired via pnpm workspaces and Turborepo. The frontend consumes `@kr
 |--------|-------------|
 | `pnpm ui:dev` | Start Storybook dev server (port 6006) |
 | `pnpm ui:build` | Build the UI library |
-| `pnpm ui:build-storybook` | Build static Storybook for deployment |
 | `pnpm ui:test` | Run UI component tests |
 | `pnpm ui:lint` | Lint UI package only |
 

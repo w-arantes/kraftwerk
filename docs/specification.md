@@ -25,7 +25,7 @@ Kraftwerk is a modern, scalable **opinionated fullstack monorepo boilerplate**. 
 | Testing | Vitest | All packages |
 | Release | semantic-release | Conventional commits |
 | Dependencies | Renovate | Automated updates |
-| CI/CD | GitHub Actions | Lint, format, build, test, Storybook deploy |
+| CI/CD | GitHub Actions | Lint, format, build, test |
 
 ## Workspace Layout
 
@@ -54,7 +54,7 @@ Kraftwerk is a modern, scalable **opinionated fullstack monorepo boilerplate**. 
 - **Figma MCP**: Design analysis, design-to-code
 - **shadcn MCP**: Component generation/installation in `@kraftwerk/ui` when applicable
 - **Context7 MCP**: Doc enrichment (library references, examples)
-- **Storybook**: Component docs; deployed to GitHub Pages
+- **Storybook**: Component documentation and development
 - **Registry**: Private npm registry (no deploy in initial setup)
 
 ## References

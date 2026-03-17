@@ -141,7 +141,6 @@ pnpm dev           # Frontend (5173) + Backend (3000) concurrently
 |---------|-------------|
 | `pnpm ui:dev` | Start Storybook |
 | `pnpm ui:build` | Build UI library |
-| `pnpm ui:build-storybook` | Build static Storybook |
 | `pnpm ui:test` | Run UI component tests |
 
 ---

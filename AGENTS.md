@@ -31,7 +31,6 @@ pnpm test             # Run tests (Vitest)
 ```bash
 pnpm ui:dev           # Start Storybook (port 6006)
 pnpm ui:build         # Build UI library
-pnpm ui:build-storybook # Build static Storybook
 pnpm ui:test          # Run UI tests
 pnpm ui:lint          # Lint UI package
 ```

@@ -1,18 +1,6 @@
 # AI Development Guidelines
 
-These guidelines apply to any AI-assisted development in this repository (Cursor, Claude, Copilot, etc.). Canonical source: this document. Tool-specific entry points: `AGENTS.md`, `.github/copilot-instructions.md`, `.cursor/skills/`.
-
-## Cursor Skills
-
-This project includes Cursor Skills (`.cursor/skills/`) that automatically activate based on context:
-
-| Skill | Activates When | Key Rules |
-|-------|----------------|-----------|
-| `kraftwerk-component` | Editing `packages/ui` components | Design Standard, `data-slot`, theme tokens |
-| `kraftwerk-docs` | Writing specs/ADRs/docs | Spec-first, Context7 MCP for enrichment |
-| `kraftwerk-quality` | Preparing commits/PRs | Lint, format, test, deslop |
-
-Skills reference this document and `docs/design-standard.md` as the source of truth.
+These guidelines apply to any AI-assisted development in this repository (Cursor, Claude, Copilot, etc.). Canonical source: this document. Tool-specific entry points: `AGENTS.md`, `.github/copilot-instructions.md`.
 
 ## Spec-First
 

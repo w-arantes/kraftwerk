@@ -4,11 +4,19 @@
 
 - **Node.js** 20+
 - **pnpm** 9+
+- **Bun** (latest) — backend runtime
+- **Docker** — for local PostgreSQL
 
 Install pnpm if needed:
 
 ```bash
 npm install -g pnpm@9
+```
+
+Install Bun if needed:
+
+```bash
+curl -fsSL https://bun.sh/install | bash
 ```
 
 ## Install
@@ -19,23 +27,39 @@ From the repository root:
 pnpm install
 ```
 
+## Environment Setup
+
+```bash
+cp .env.example .env
+```
+
+## Start Database
+
+```bash
+pnpm db:up        # Start PostgreSQL via Docker Compose
+pnpm db:migrate   # Run Drizzle migrations
+```
+
 ## First Run
 
-- **Example app**: `pnpm dev` — runs the Vite app at `apps/web` (default port typically 5173).
+- **Full stack**: `pnpm dev` — runs frontend (port 5173) + backend (port 3000) concurrently.
+- **Frontend only**: `pnpm dev:frontend` — Vite dev server at port 5173.
+- **Backend only**: `pnpm dev:backend` — Elysia server at port 3000.
 - **UI Development (Storybook)**: `pnpm ui:dev` — runs Storybook at `http://localhost:6006`.
 
 ## Workspace Layout Overview
 
 ```
 kraftwerk/
-├── apps/web          # Example Vite + React app (@kraftwerk/web)
-├── packages/config   # Shared configs (@kraftwerk/config)
-├── packages/ui      # Design system & components (@kraftwerk/ui)
-├── docs/            # Specification and guides
-└── .github/         # CI/CD workflows
+├── packages/frontend  # Vite + React app (@kraftwerk/frontend)
+├── packages/backend   # Elysia + Bun API server (@kraftwerk/backend)
+├── packages/config    # Shared configs (@kraftwerk/config)
+├── packages/ui        # Design system & components (@kraftwerk/ui)
+├── docs/              # Specification and guides
+└── .github/           # CI/CD workflows
 ```
 
-Apps and packages are wired via pnpm workspaces and Turborepo. The example app consumes `@kraftwerk/ui` and `@kraftwerk/config`.
+Packages are wired via pnpm workspaces and Turborepo. The frontend consumes `@kraftwerk/ui` and `@kraftwerk/config`. The backend uses Drizzle ORM with PostgreSQL.
 
 ## Key Scripts
 
@@ -44,8 +68,10 @@ Apps and packages are wired via pnpm workspaces and Turborepo. The example app c
 | Script | Description |
 |--------|-------------|
 | `pnpm install` | Install all dependencies |
-| `pnpm dev` | Start dev server for the example app |
-| `pnpm build` | Build all packages and apps |
+| `pnpm dev` | Start frontend + backend concurrently |
+| `pnpm dev:frontend` | Start frontend only (Vite, port 5173) |
+| `pnpm dev:backend` | Start backend only (Elysia, port 3000) |
+| `pnpm build` | Build all packages |
 | `pnpm lint` | Lint all workspaces (Biome) |
 | `pnpm format` | Check formatting (Biome) |
 | `pnpm format:write` | Apply formatting |
@@ -61,7 +87,17 @@ Apps and packages are wired via pnpm workspaces and Turborepo. The example app c
 | `pnpm ui:test` | Run UI component tests |
 | `pnpm ui:lint` | Lint UI package only |
 
-Run scripts from the **repository root** to affect the whole monorepo, or from a package/app directory to run only for that workspace.
+### Database Scripts (`db:*`)
+
+| Script | Description |
+|--------|-------------|
+| `pnpm db:up` | Start PostgreSQL (Docker Compose) |
+| `pnpm db:down` | Stop PostgreSQL |
+| `pnpm db:generate` | Generate Drizzle migrations |
+| `pnpm db:migrate` | Run Drizzle migrations |
+| `pnpm db:studio` | Open Drizzle Studio |
+
+Run scripts from the **repository root** to affect the whole monorepo, or from a package directory to run only for that workspace.
 
 ## Next Steps
 

@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Kraftwerk is a modern, scalable **monorepo boilerplate** focused on **package distribution**. All packages use the `@kraftwerk/` scope prefix. The repository follows spec-driven development: specification and architecture decisions are documented before implementation.
+Kraftwerk is a modern, scalable **opinionated fullstack monorepo boilerplate**. All packages use the `@kraftwerk/` scope prefix. The repository follows spec-driven development: specification and architecture decisions are documented before implementation.
 
 ## Tech Stack
 
@@ -15,7 +15,11 @@ Kraftwerk is a modern, scalable **monorepo boilerplate** focused on **package di
 | Lint & format | Biome | `^2.4.7` |
 | CSS | Tailwind CSS | `^4.2.1` (`@theme`, CSS variables) |
 | UI runtime | React | 19 |
-| Build (apps) | Vite | 6.x |
+| Build (frontend) | Vite | 6.x |
+| Backend runtime | Bun | Latest |
+| Backend framework | Elysia | `^1.3.x` |
+| Database ORM | Drizzle ORM | `^0.44.x` |
+| Database | PostgreSQL | 17 (Docker) |
 | Headless UI | Base UI React | `^1.3.0` |
 | Env validation | T3 Env + Zod | `@t3-oss/env-core` |
 | Testing | Vitest | All packages |
@@ -29,7 +33,8 @@ Kraftwerk is a modern, scalable **monorepo boilerplate** focused on **package di
 |------|----------------|---------|
 | `packages/config` | `@kraftwerk/config` | Centralized Biome, TypeScript, Vitest configs |
 | `packages/ui` | `@kraftwerk/ui` | Design system & component library (Storybook) |
-| `apps/web` | `@kraftwerk/web` | Example Vite + React app consuming `@kraftwerk/ui` |
+| `packages/frontend` | `@kraftwerk/frontend` | Vite + React app consuming `@kraftwerk/ui` |
+| `packages/backend` | `@kraftwerk/backend` | Elysia + Bun API server with Drizzle + PostgreSQL |
 
 ## Branding
 

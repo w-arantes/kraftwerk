@@ -4,12 +4,32 @@ This document describes how to use Kraftwerk as a boilerplate and how to customi
 
 ## Adopting the Boilerplate
 
+### Using the CLI (recommended)
+
+```bash
+npx @kraftwerk/create
+```
+
+The CLI scaffolds a new project using your **project name as the package scope**. For example, naming your project `my-app` generates `@my-app/frontend`, `@my-app/backend`, `@my-app/ui`, and `@my-app/config` — not `@kraftwerk/*`. This makes every scaffold unique to your project.
+
+The CLI also asks which **AI coding agent** you use and generates only the relevant instruction files:
+
+| Agent | Generated files |
+|-------|----------------|
+| **GitHub Copilot** | `.github/copilot-instructions.md` + `AGENTS.md` |
+| **Cursor** | `.cursor/rules/*.mdc` (component, docs, quality) + `AGENTS.md` |
+| **Claude Code** | `CLAUDE.md` + `AGENTS.md` |
+| **All agents** | All of the above |
+| **None** | No AI instruction files |
+
+After scaffolding, the CLI runs a **cleanup step** that removes unused files — if you pick "Frontend only", backend files are deleted; if you pick "Copilot", Cursor and Claude files are removed, etc. The result is a clean project with only what you selected.
+
 ### Clone vs Template
 
 - **Clone**: `git clone <repo-url> my-project` then rename scope and branding.
 - **Template**: If the repo is used as a GitHub template, create a new repo from it and then customize.
 
-### Renaming the Scope
+### Renaming the Scope (manual)
 
 1. Replace `@kraftwerk/` with your scope (e.g. `@myorg/`) in:
    - All `package.json` `name` fields
@@ -20,16 +40,16 @@ This document describes how to use Kraftwerk as a boilerplate and how to customi
 
 ### Initial Cleanup
 
-- Remove or replace example app content as needed.
+- Remove or replace frontend content as needed.
 - Adjust `docs/` and root `README.md` to match your product.
-- Optionally remove or simplify packages you do not need (e.g. keep only `config` and one app initially).
+- Optionally remove packages you do not need (e.g. drop backend if frontend-only).
 
 ## Customization
 
 ### Design Tokens
 
 - Tokens are defined in `@kraftwerk/ui` (e.g. `packages/ui/src/styles/theme.css`) using Tailwind v4 `@theme`.
-- Edit `@theme` variables to change the palette (e.g. grey scale, semantic colors).
+- Branding config lives in `packages/ui/src/brand.ts` — edit this for colors, fonts, and project name.
 - Do not use hardcoded hex in components; use theme utilities (e.g. `bg-surface`, `text-foreground`).
 
 ### Package Scope
@@ -44,16 +64,14 @@ This document describes how to use Kraftwerk as a boilerplate and how to customi
 3. Add the package to the Turborepo pipeline in `turbo.json` if it has `build`, `lint`, or `test` scripts.
 4. Add TypeScript (and optionally Biome) config; extend from `@kraftwerk/config` where possible.
 5. From root, run `pnpm install` so the workspace links the new package.
-6. Add the package as a dependency to any app or package that uses it.
+6. Add the package as a dependency to any package that uses it.
 
-### Adding Apps
+### Backend Modules
 
-1. Create a new directory under `apps/` (e.g. `apps/next-app`).
-2. Scaffold the app (Vite, Next.js, etc.). For Next.js, use `@kraftwerk/config` presets for Biome/TypeScript (e.g. `biome-next`, `typescript/next`).
-3. For env vars, use T3 Env: `@t3-oss/env-core` for Vite (prefix `VITE_`), `@t3-oss/env-nextjs` for Next.js (prefix `NEXT_PUBLIC_`).
-4. Add the app to `turbo.json` (e.g. `build`, `lint`, `test`).
-5. Add the app to the root `package.json` scripts if you want a root-level command (e.g. `pnpm dev:next`).
-6. Use workspace packages via `@kraftwerk/ui`, `@kraftwerk/config`, etc.
+1. Create a new directory under `packages/backend/src/modules/` (e.g. `modules/users/`).
+2. Add a `route.ts` with an Elysia instance and prefix (e.g. `new Elysia({ prefix: "/users" })`).
+3. Register the module in `src/index.ts` with `.use(usersRoute)`.
+4. Add Drizzle schema tables in `src/db/schema.ts`, then run `pnpm db:generate` and `pnpm db:migrate`.
 
 ## Publishing
 
@@ -65,7 +83,16 @@ This document describes how to use Kraftwerk as a boilerplate and how to customi
 
 ## AI-Assisted Development
 
-Kraftwerk provides multiple layers of AI guidance to ensure consistent, high-quality code generation across different tools and LLMs.
+Kraftwerk provides AI guidance to ensure consistent, high-quality code generation across different tools and LLMs. The CLI generates only the files for your chosen agent.
+
+### Supported Agents
+
+| Agent | File(s) | Format |
+|-------|---------|--------|
+| **GitHub Copilot** | `.github/copilot-instructions.md` | Markdown, auto-read by Copilot |
+| **Cursor** | `.cursor/rules/*.mdc` | MDC with YAML frontmatter + globs |
+| **Claude Code** | `CLAUDE.md` | Markdown at repo root, auto-read by Claude |
+| **Universal** | `AGENTS.md` | Markdown, works with any LLM/tool |
 
 ### Documentation Hierarchy
 
@@ -73,52 +100,10 @@ Kraftwerk provides multiple layers of AI guidance to ensure consistent, high-qua
 |----------|----------|---------|
 | **AGENTS.md** | Repository root | Universal AI agent instructions (any LLM/tool) |
 | **ai-guidelines.md** | `docs/` | Full AI development guidelines |
-| **design-standard.md** | `docs/` | Component patterns for `@kraftwerk/ui` |
+| **design-standard.md** | `docs/` | Component patterns for UI package |
 | **copilot-instructions.md** | `.github/` | GitHub Copilot repository instructions |
-
-### Cursor Skills
-
-Cursor Skills are project-specific instructions that activate automatically based on context. They live in `.cursor/skills/` and reference the canonical documentation.
-
-| Skill | File | Activates When |
-|-------|------|----------------|
-| **kraftwerk-component** | `.cursor/skills/kraftwerk-component/SKILL.md` | Creating or editing UI components in `packages/ui` |
-| **kraftwerk-docs** | `.cursor/skills/kraftwerk-docs/SKILL.md` | Writing or updating specs, ADRs, or documentation |
-| **kraftwerk-quality** | `.cursor/skills/kraftwerk-quality/SKILL.md` | Finishing changes or preparing commits/PRs |
-
-#### How Skills Work
-
-1. **Automatic activation**: Cursor detects the context (e.g., editing a file in `packages/ui`) and loads the relevant skill.
-2. **Reference canonical docs**: Skills point to `docs/` files as the source of truth, avoiding duplication.
-3. **Enforce patterns**: Each skill summarizes key rules so the AI follows project conventions without reading the full docs every time.
-
-#### Skill: kraftwerk-component
-
-Enforces the Design-to-React standard when working on `@kraftwerk/ui`:
-
-- React 19 patterns (no `forwardRef`)
-- `tailwind-variants` + `tailwind-merge` for styling
-- `data-slot` on root elements
-- Theme tokens only (no hardcoded hex)
-- Named exports, lowercase-hyphen filenames
-
-#### Skill: kraftwerk-docs
-
-Enforces spec-first workflow and MCP usage:
-
-- Write spec/ADR before implementing features
-- Use **Context7 MCP** to enrich docs with library references
-- Use **Figma MCP** for design-to-code workflows
-- Use **shadcn MCP** for component generation
-
-#### Skill: kraftwerk-quality
-
-Enforces quality gates before commit/PR:
-
-1. `pnpm lint` must pass
-2. `pnpm format` must pass
-3. `pnpm test` must pass
-4. **Deslop**: Remove AI-generated slop (unnecessary comments, defensive try/catch, `any` casts, nested code)
+| **CLAUDE.md** | Repository root | Claude Code project instructions |
+| **.cursor/rules/*.mdc** | `.cursor/rules/` | Cursor contextual rules (component, docs, quality) |
 
 ### MCP Tools
 

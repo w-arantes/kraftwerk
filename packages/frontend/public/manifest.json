@@ -1,0 +1,19 @@
+{
+	"name": "kraftwerk",
+	"short_name": "kraftwerk",
+	"description": "An opinionated fullstack monorepo boilerplate",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#050505",
+	"theme_color": "#39ff14",
+	"orientation": "portrait-primary",
+	"icons": [
+		{
+			"src": "/favicon.svg",
+			"sizes": "any",
+			"type": "image/svg+xml",
+			"purpose": "any maskable"
+		}
+	],
+	"categories": ["developer tools", "productivity"]
+}

@@ -1,0 +1,10 @@
+/* TEAM */
+Developer: Wellington Arantes
+Site: https://github.com/w-arantes
+Location: Brazil
+
+/* SITE */
+Last update: 2026/03/17
+Standards: HTML5, CSS3, ES2024
+Components: React 19, Tailwind CSS v4
+Software: Vite, Elysia, Bun, Drizzle ORM, Turborepo, pnpm, Biome, Vitest

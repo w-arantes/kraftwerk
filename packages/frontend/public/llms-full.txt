@@ -1,0 +1,238 @@
+# kraftwerk — Full Documentation for LLMs
+
+> An opinionated fullstack monorepo boilerplate.
+
+## Etymology
+
+**kraftwerk** (German: /ˈkʁaftvɛʁk/) — power plant, factory
+
+Like a power plant generates energy, kraftwerk generates the foundation for your fullstack apps.
+
+## Overview
+
+kraftwerk is a production-ready fullstack monorepo boilerplate designed for building scalable applications. It provides a modern, opinionated setup with best-in-class tooling for both frontend and backend development.
+
+## Tech Stack
+
+### Build System
+- **Turborepo** — Incremental builds, remote caching, task orchestration
+- **pnpm** — Fast, disk-efficient package manager with strict isolation
+
+### Language & Types
+- **TypeScript 5.7+** — Strict mode, ESM-only, latest features
+- **Biome** — Unified linting and formatting (replaces ESLint + Prettier)
+
+### Frontend
+- **React 19** — Latest patterns, no forwardRef needed
+- **Tailwind CSS v4** — CSS-first configuration with @theme directive
+- **Vite 6** — Next-generation frontend tooling
+
+### Backend
+- **Elysia** — Fast, type-safe web framework
+- **Bun** — Fast JavaScript runtime
+- **Drizzle ORM** — TypeScript-first SQL ORM
+- **PostgreSQL 17** — Database (Docker)
+
+### Testing
+- **Vitest** — Fast unit testing with native ESM support
+
+### CI/CD
+- **GitHub Actions** — Automated workflows for lint, test, build
+- **semantic-release** — Automated versioning and changelog
+- **Renovate** — Automated dependency updates
+
+## Workspace Structure
+
+```
+kraftwerk/
+├── packages/
+│   ├── frontend/               # Vite + React application
+│   │   ├── src/
+│   │   │   ├── App.tsx         # Main application component
+│   │   │   ├── main.tsx        # Entry point
+│   │   │   ├── env.ts          # T3 Env validation
+│   │   │   └── index.css       # Global styles
+│   │   ├── public/             # Static assets
+│   │   └── index.html          # HTML template
+│   ├── backend/                # Elysia + Bun API server
+│   │   ├── src/
+│   │   │   ├── index.ts        # Elysia app entry
+│   │   │   ├── env.ts          # T3 Env validation
+│   │   │   ├── db/             # Drizzle ORM (schema, client, migrate)
+│   │   │   ├── modules/        # API modules (health, etc.)
+│   │   │   └── plugins/        # Elysia plugins (CORS, etc.)
+│   │   └── drizzle.config.ts   # Drizzle Kit config
+│   ├── config/                 # Shared configuration
+│   │   ├── biome/              # Biome configs (base, react, node)
+│   │   ├── typescript/         # TypeScript configs (base, react, node)
+│   │   └── vitest/             # Vitest configs
+│   └── ui/                     # Design system
+│       ├── src/
+│       │   ├── components/     # React components
+│       │   ├── styles/         # Theme and CSS
+│       │   ├── brand.ts        # Branding config
+│       │   └── index.ts        # Barrel exports
+│       └── .storybook/         # Storybook configuration
+├── docs/                       # Documentation
+│   ├── specification.md        # Project specification
+│   ├── ai-guidelines.md        # AI development guidelines
+│   ├── design-standard.md      # Component design standard
+│   ├── getting-started.md      # Quick start guide
+│   └── usage.md                # Usage documentation
+├── .github/
+│   ├── workflows/              # CI/CD workflows
+│   └── copilot-instructions.md # GitHub Copilot instructions
+├── docker-compose.yaml         # PostgreSQL service
+├── .env.example                # Environment variables template
+├── AGENTS.md                   # Universal AI agent instructions
+├── turbo.json                  # Turborepo configuration
+├── pnpm-workspace.yaml         # pnpm workspace definition
+└── biome.json                  # Root Biome configuration
+```
+
+## Available Scripts
+
+### Monorepo Scripts
+| Script | Description |
+|--------|-------------|
+| `pnpm install` | Install dependencies |
+| `pnpm dev` | Run frontend + backend concurrently |
+| `pnpm dev:frontend` | Run frontend only (Vite, port 5173) |
+| `pnpm dev:backend` | Run backend only (Elysia, port 3000) |
+| `pnpm build` | Build all packages |
+| `pnpm lint` | Lint all workspaces |
+| `pnpm format` | Check formatting |
+| `pnpm format:write` | Format and write |
+| `pnpm test` | Run all tests |
+
+### UI Package Scripts
+| Script | Description |
+|--------|-------------|
+| `pnpm ui:dev` | Start Storybook (port 6006) |
+| `pnpm ui:build` | Build UI library |
+| `pnpm ui:build-storybook` | Build static Storybook |
+| `pnpm ui:test` | Run UI tests |
+| `pnpm ui:lint` | Lint UI package |
+
+### Database Scripts
+| Script | Description |
+|--------|-------------|
+| `pnpm db:up` | Start PostgreSQL (Docker Compose) |
+| `pnpm db:down` | Stop PostgreSQL |
+| `pnpm db:generate` | Generate Drizzle migrations |
+| `pnpm db:migrate` | Run Drizzle migrations |
+| `pnpm db:studio` | Open Drizzle Studio |
+
+## Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/w-arantes/kraftwerk.git
+cd kraftwerk
+
+# Install dependencies
+pnpm install
+
+# Setup environment
+cp .env.example .env
+
+# Start database
+pnpm db:up
+pnpm db:migrate
+
+# Start development (frontend + backend)
+pnpm dev
+
+# Or start Storybook for UI development
+pnpm ui:dev
+```
+
+## UI Components
+
+The `@kraftwerk/ui` package includes:
+
+- **Button** — Primary, secondary, ghost, destructive variants with sizes
+- **Card** — Container component with header, content, footer slots
+- **Input** — Text input with size variants
+- **Select** — Native select with ChevronDown icon and sizes
+- **Label** — Form label primitive
+- **Textarea** — Multi-line text input with sizes
+- **Badge** — Status indicators with variant and size options
+- **Separator** — Horizontal/vertical divider
+- **Switch** — Toggle switch with controlled state
+- **Logo** — kraftwerk branding component
+- **Terminal** — Code/terminal display component
+- **AnimatedTerminal** — Terminal with typing animation
+- **FeatureCard** — Feature showcase card
+- **ThemeToggle** — Dark/light mode toggle
+- **MatrixRain** — Decorative matrix rain effect
+
+## Design Tokens
+
+Theme colors are defined via CSS variables in `packages/ui/src/styles/theme.css` and branding in `packages/ui/src/brand.ts`:
+
+```css
+/* Dark Theme (Default) */
+--color-bg-main: #050505;
+--color-bg-surface: #0a1f0a;
+--color-text-primary: #39ff14;
+--color-text-muted: #228b22;
+--color-accent: #00ff41;
+--color-border-palette: #003b00;
+
+/* Light Theme */
+--color-bg-main: #f0fff0;
+--color-bg-surface: #e0f5e0;
+--color-text-primary: #0a4f0a;
+--color-accent: #00a020;
+```
+
+## Backend Architecture
+
+The backend uses a modular Elysia architecture:
+
+- **Modules**: Feature modules under `src/modules/` (e.g., `health/route.ts`)
+- **Plugins**: Shared plugins under `src/plugins/` (e.g., CORS)
+- **Database**: Drizzle ORM with PostgreSQL, schema in `src/db/schema.ts`
+- **Env validation**: T3 Env + Zod in `src/env.ts`
+- **CORS**: Configured via `@elysiajs/cors`
+
+## AI Development
+
+kraftwerk includes AI development support:
+
+### Documentation Hierarchy
+1. **AGENTS.md** — Universal AI agent instructions
+2. **docs/ai-guidelines.md** — Detailed AI development guidelines
+3. **.github/copilot-instructions.md** — GitHub Copilot instructions
+
+### MCP Tools
+- **Figma MCP** — Design-to-code workflows
+- **shadcn MCP** — Component generation
+- **Context7 MCP** — Documentation enrichment
+
+## Quality Gates
+
+Before committing:
+1. `pnpm lint` — Must pass
+2. `pnpm format` — Must pass
+3. `pnpm test` — Must pass
+4. Remove AI slop (unnecessary comments, defensive code, any casts)
+
+## Links
+
+- **Repository**: https://github.com/w-arantes/kraftwerk
+- **Documentation**: https://github.com/w-arantes/kraftwerk#documentation
+- **License**: MIT
+- **Author**: Wellington Arantes (https://github.com/w-arantes)
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Follow the AI guidelines and quality gates
+4. Submit a pull request
+
+## License
+
+MIT License — see LICENSE file for details.

@@ -1,0 +1,55 @@
+# kraftwerk
+
+> An opinionated fullstack monorepo boilerplate.
+
+## About
+
+kraftwerk (German: /ˈkʁaftvɛʁk/ — power plant, factory) is a production-ready fullstack monorepo boilerplate for building scalable applications with a modern TypeScript stack.
+
+## Tech Stack
+
+- **Turborepo** — Incremental builds, remote caching
+- **pnpm** — Fast, disk-efficient package manager
+- **TypeScript** — Strict mode, ESM-only
+- **Biome** — Unified linting and formatting
+- **React 19** — Latest patterns, Vite 6, Tailwind CSS v4
+- **Elysia + Bun** — Fast, type-safe API server
+- **Drizzle ORM + PostgreSQL** — TypeScript-first database layer
+- **Vitest** — Fast unit testing
+
+## Workspace Structure
+
+```
+kraftwerk/
+├── packages/
+│   ├── frontend/         # Vite + React app
+│   ├── backend/          # Elysia + Bun API server
+│   ├── config/           # Shared Biome, TypeScript, Vitest configs
+│   └── ui/               # Design system with Storybook
+├── docs/                 # Specification and guides
+└── .github/              # CI/CD workflows
+```
+
+## Quick Start
+
+```bash
+git clone https://github.com/w-arantes/kraftwerk.git
+cd kraftwerk
+pnpm install
+cp .env.example .env
+pnpm db:up
+pnpm dev
+```
+
+## AI Development
+
+This project includes AI-ready tooling:
+
+- **AGENTS.md** — Universal AI agent instructions
+- **.github/copilot-instructions.md** — GitHub Copilot instructions
+
+## Links
+
+- Repository: https://github.com/w-arantes/kraftwerk
+- Documentation: https://github.com/w-arantes/kraftwerk#documentation
+- License: MIT

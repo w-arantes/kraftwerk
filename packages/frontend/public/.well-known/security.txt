@@ -1,0 +1,7 @@
+# Security Policy for kraftwerk
+# https://securitytxt.org/
+
+Contact: https://github.com/w-arantes/kraftwerk/security/advisories/new
+Preferred-Languages: en, pt
+Canonical: https://kraftwerk.dev/.well-known/security.txt
+Policy: https://github.com/w-arantes/kraftwerk/security/policy

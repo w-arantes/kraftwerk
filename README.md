@@ -68,7 +68,7 @@ The `@kraftwerk/ui` package ships with ready-to-use components following the [De
 
 **Layout** — Card (with CardHeader, CardContent, CardTitle)
 
-**Branding** — Logo, ThemeToggle (dark/light), AnimatedTerminal, Terminal, FeatureCard, MatrixRain
+**Branding** — Logo, ThemeToggle (dark/light), AnimatedTerminal, Terminal, FeatureCard
 
 All components use `tailwind-variants` for styling, `tailwind-merge` for class composition, `data-slot` for slot identification, and theme tokens (no hardcoded hex).
 

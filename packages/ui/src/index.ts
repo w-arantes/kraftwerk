@@ -16,7 +16,6 @@ export { FeatureCard, type FeatureCardProps } from "./components/feature-card";
 export { Input, type InputProps, inputVariants } from "./components/input";
 export { Label, type LabelProps } from "./components/label";
 export { Logo, type LogoProps, logoVariants } from "./components/logo";
-export { MatrixRain, type MatrixRainProps } from "./components/matrix-rain";
 export { Select, type SelectProps, selectVariants } from "./components/select";
 export { Separator, type SeparatorProps } from "./components/separator";
 export {

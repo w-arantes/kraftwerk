@@ -165,7 +165,6 @@ The `@kraftwerk/ui` package includes:
 - **AnimatedTerminal** — Terminal with typing animation
 - **FeatureCard** — Feature showcase card
 - **ThemeToggle** — Dark/light mode toggle
-- **MatrixRain** — Decorative matrix rain effect
 
 ## Design Tokens
 

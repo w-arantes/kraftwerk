@@ -1,11 +1,14 @@
 # AGENTS.md — Instructions for AI Coding Agents
 
-Kraftwerk is a **monorepo boilerplate** for package distribution. All packages use the `@kraftwerk/` scope. Follow the guidelines below when editing this repository.
+Kraftwerk is an **opinionated fullstack monorepo boilerplate**. All packages use the `@kraftwerk/` scope. Follow the guidelines below when editing this repository.
 
 ## Quick Reference
 
 - **Monorepo**: Turborepo + pnpm workspaces
 - **Language**: TypeScript (strict), ESM only
+- **Frontend**: React 19, Vite 6, Tailwind CSS v4
+- **Backend**: Elysia + Bun runtime
+- **Database**: Drizzle ORM + PostgreSQL
 - **Lint/format**: Biome
 - **Tests**: Vitest
 
@@ -13,8 +16,10 @@ Kraftwerk is a **monorepo boilerplate** for package distribution. All packages u
 
 ```bash
 pnpm install          # Install dependencies
-pnpm dev              # Run example app (apps/web)
-pnpm build            # Build all packages and apps
+pnpm dev              # Run frontend + backend concurrently
+pnpm dev:frontend     # Run frontend only (Vite, port 5173)
+pnpm dev:backend      # Run backend only (Elysia, port 3000)
+pnpm build            # Build all packages
 pnpm lint             # Lint all workspaces
 pnpm format           # Format all workspaces (check)
 pnpm format:write     # Format and write
@@ -31,13 +36,24 @@ pnpm ui:test          # Run UI tests
 pnpm ui:lint          # Lint UI package
 ```
 
+### Database Commands (`db:*`)
+
+```bash
+pnpm db:up            # Start PostgreSQL (Docker Compose)
+pnpm db:down          # Stop PostgreSQL
+pnpm db:generate      # Generate Drizzle migrations
+pnpm db:migrate       # Run Drizzle migrations
+pnpm db:studio        # Open Drizzle Studio
+```
+
 ## Workspace Layout
 
 | Path | Name | Role |
 |------|------|------|
 | `packages/config` | @kraftwerk/config | Biome, TypeScript, Vitest configs |
 | `packages/ui` | @kraftwerk/ui | Design system, Storybook |
-| `apps/web` | @kraftwerk/web | Example Vite + React app |
+| `packages/frontend` | @kraftwerk/frontend | Vite + React app |
+| `packages/backend` | @kraftwerk/backend | Elysia + Bun API server |
 
 ## Code Style
 

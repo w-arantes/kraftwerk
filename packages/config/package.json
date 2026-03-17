@@ -1,0 +1,26 @@
+{
+	"name": "@kraftwerk/config",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"lint": "biome check .",
+		"format": "biome check .",
+		"test": "vitest run"
+	},
+	"exports": {
+		"./biome/base.json": "./biome/base.json",
+		"./biome/react.json": "./biome/react.json",
+		"./biome/next.json": "./biome/next.json",
+		"./biome/node.json": "./biome/node.json",
+		"./typescript/base.json": "./typescript/base.json",
+		"./typescript/react.json": "./typescript/react.json",
+		"./typescript/next.json": "./typescript/next.json",
+		"./typescript/node.json": "./typescript/node.json",
+		"./vitest/base": "./vitest/base.ts"
+	},
+	"files": [
+		"biome",
+		"typescript",
+		"vitest"
+	]
+}

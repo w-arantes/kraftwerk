@@ -1,0 +1,32 @@
+{
+	"name": "@kraftwerk/backend",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "bun run --watch src/index.ts",
+		"build": "bun build src/index.ts --outdir dist --target bun",
+		"lint": "biome check .",
+		"format": "biome check .",
+		"test": "vitest run",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate": "drizzle-kit migrate",
+		"db:studio": "drizzle-kit studio"
+	},
+	"dependencies": {
+		"@elysiajs/cors": "^1.3.1",
+		"@t3-oss/env-core": "^0.13.10",
+		"drizzle-orm": "^0.44.2",
+		"elysia": "^1.3.3",
+		"postgres": "^3.4.7",
+		"zod": "^3.24.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.7",
+		"@kraftwerk/config": "workspace:*",
+		"bun-types": "^1.2.21",
+		"drizzle-kit": "^0.31.4",
+		"typescript": "^5.7.2",
+		"vitest": "^2.1.6"
+	}
+}

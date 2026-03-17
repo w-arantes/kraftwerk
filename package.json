@@ -8,7 +8,9 @@
 	},
 	"scripts": {
 		"build": "turbo run build",
-		"dev": "turbo run dev --filter=@kraftwerk/web",
+		"dev": "turbo run dev",
+		"dev:frontend": "turbo run dev --filter=@kraftwerk/frontend",
+		"dev:backend": "turbo run dev --filter=@kraftwerk/backend",
 		"lint": "turbo run lint",
 		"format": "biome check .",
 		"format:write": "biome check --write .",
@@ -17,7 +19,12 @@
 		"ui:build": "pnpm --filter @kraftwerk/ui run build",
 		"ui:build-storybook": "pnpm --filter @kraftwerk/ui run build-storybook",
 		"ui:test": "pnpm --filter @kraftwerk/ui run test",
-		"ui:lint": "pnpm --filter @kraftwerk/ui run lint"
+		"ui:lint": "pnpm --filter @kraftwerk/ui run lint",
+		"db:up": "docker compose up -d",
+		"db:down": "docker compose down",
+		"db:generate": "pnpm --filter @kraftwerk/backend run db:generate",
+		"db:migrate": "pnpm --filter @kraftwerk/backend run db:migrate",
+		"db:studio": "pnpm --filter @kraftwerk/backend run db:studio"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.7",

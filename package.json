@@ -1,0 +1,28 @@
+{
+	"name": "kraftwerk",
+	"version": "0.0.0",
+	"private": true,
+	"packageManager": "pnpm@9.14.2",
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"build": "turbo run build",
+		"dev": "turbo run dev --filter=@kraftwerk/web",
+		"lint": "turbo run lint",
+		"format": "biome check .",
+		"format:write": "biome check --write .",
+		"test": "turbo run test",
+		"ui:dev": "pnpm --filter @kraftwerk/ui run storybook",
+		"ui:build": "pnpm --filter @kraftwerk/ui run build",
+		"ui:build-storybook": "pnpm --filter @kraftwerk/ui run build-storybook",
+		"ui:test": "pnpm --filter @kraftwerk/ui run test",
+		"ui:lint": "pnpm --filter @kraftwerk/ui run lint"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.7",
+		"turbo": "^2.8.16",
+		"typescript": "^5.7.2",
+		"vitest": "^2.1.6"
+	}
+}

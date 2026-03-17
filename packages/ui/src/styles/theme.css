@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+	/* Grey scale (50–950) */
+	--color-grey-50: oklch(0.98 0 0);
+	--color-grey-100: oklch(0.96 0.005 264);
+	--color-grey-200: oklch(0.91 0.01 264);
+	--color-grey-300: oklch(0.83 0.015 264);
+	--color-grey-400: oklch(0.65 0.02 264);
+	--color-grey-500: oklch(0.52 0.02 264);
+	--color-grey-600: oklch(0.42 0.02 264);
+	--color-grey-700: oklch(0.34 0.02 264);
+	--color-grey-800: oklch(0.27 0.015 264);
+	--color-grey-900: oklch(0.21 0.01 264);
+	--color-grey-950: oklch(0.13 0.01 264);
+
+	/* Semantic surfaces (dark/grey palette) */
+	--color-surface: var(--color-grey-900);
+	--color-surface-raised: var(--color-grey-800);
+	--color-muted: var(--color-grey-800);
+
+	/* Text */
+	--color-foreground: var(--color-grey-50);
+	--color-foreground-subtle: var(--color-grey-300);
+	--color-muted-foreground: var(--color-grey-400);
+
+	/* Borders */
+	--color-border: var(--color-grey-700);
+	--color-input: var(--color-grey-600);
+
+	/* Accents */
+	--color-primary: var(--color-grey-100);
+	--color-primary-foreground: var(--color-grey-900);
+	--color-primary-hover: var(--color-grey-200);
+	--color-secondary: var(--color-grey-800);
+	--color-secondary-foreground: var(--color-grey-200);
+	--color-destructive: oklch(0.55 0.2 25);
+	--color-ring: var(--color-grey-500);
+}

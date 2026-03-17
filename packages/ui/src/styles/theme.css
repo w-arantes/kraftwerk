@@ -1,7 +1,15 @@
 @import "tailwindcss";
 
+/*
+ * Theme Tokens
+ *
+ * To rebrand, edit packages/ui/src/brand.ts (for Storybook + JS)
+ * and update the hex values below to match.
+ * All components consume these semantic tokens — no hex in components.
+ */
+
 @theme {
-	/* Dark Theme (CRT Terminal) - Default */
+	/* ── Brand Palette (Dark / Default) ───────────────────── */
 	--color-bg-main: #050505;
 	--color-bg-surface: #0a1f0a;
 	--color-text-primary: #39ff14;
@@ -10,21 +18,21 @@
 	--color-accent-glow: rgba(57, 255, 20, 0.2);
 	--color-border-palette: #003b00;
 
-	/* Semantic surfaces */
+	/* ── Semantic Surfaces ────────────────────────────────── */
 	--color-surface: var(--color-bg-surface);
 	--color-surface-raised: #0d2d0d;
 	--color-muted: #0d2d0d;
 
-	/* Text */
+	/* ── Text ─────────────────────────────────────────────── */
 	--color-foreground: var(--color-text-primary);
 	--color-foreground-subtle: var(--color-text-muted);
 	--color-muted-foreground: #1a6b1a;
 
-	/* Borders */
+	/* ── Borders ──────────────────────────────────────────── */
 	--color-border: var(--color-border-palette);
 	--color-input: var(--color-border-palette);
 
-	/* Accents */
+	/* ── Accents ──────────────────────────────────────────── */
 	--color-primary: var(--color-accent);
 	--color-primary-foreground: var(--color-bg-main);
 	--color-primary-hover: #33ff55;
@@ -34,7 +42,7 @@
 	--color-ring: var(--color-accent);
 }
 
-/* Light Theme Override */
+/* ── Light Theme Override ──────────────────────────────── */
 [data-theme="light"] {
 	--color-bg-main: #f0fff0;
 	--color-bg-surface: #e0f5e0;

@@ -5,6 +5,7 @@
 	"type": "module",
 	"exports": {
 		".": "./src/index.ts",
+		"./brand": "./src/brand.ts",
 		"./styles": "./src/styles/theme.css"
 	},
 	"scripts": {
@@ -27,8 +28,6 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.7",
-		"@storybook/addon-essentials": "^8.6.0",
-		"@storybook/blocks": "^8.6.0",
 		"@storybook/react": "^10.2.19",
 		"@storybook/react-vite": "^10.2.19",
 		"@tailwindcss/vite": "^4.2.0",

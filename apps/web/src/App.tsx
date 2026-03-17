@@ -123,7 +123,7 @@ export function App() {
 								<Button
 									variant="primary"
 									size="lg"
-									className="w-full"
+									className="w-full h-12 px-20"
 									tabIndex={showButtons ? 0 : -1}
 								>
 									Get Started
@@ -138,7 +138,7 @@ export function App() {
 								<Button
 									variant="secondary"
 									size="lg"
-									className="w-full"
+									className="w-full h-12 px-20"
 									tabIndex={showButtons ? 0 : -1}
 								>
 									Documentation

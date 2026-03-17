@@ -11,7 +11,7 @@ export const buttonVariants = tv({
 	variants: {
 		variant: {
 			primary:
-				"border-primary bg-primary text-primary-foreground hover:bg-primary-hover",
+				"border-primary text-red hover:bg-primary-hover",
 			secondary:
 				"border-border bg-secondary text-secondary-foreground hover:bg-muted",
 		},
